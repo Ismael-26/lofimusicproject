@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Lofi Music & Chill</title>
+        <link rel=stylesheet type=text/css href=cssFile/index.css> <link rel=stylesheet type=text/css href=cssFile/clock.css> <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700" />
+    </head>
+    <body>
+        
+        <div class="container">
+            <img src=icon/music.png id=music_icon onclick=hideAndShow()> 
+            <img src=icon/shuffle.png id=shuffle_image onclick=shuffle_pic()>
+            <img src=icon/fullscreen.png id=full_screenON onclick=fullscreenModeON()> 
+            <!--
+                <img src=icon/spotify.png id=listOfSongs>
+            --> 
+        </div>
+        <div id="music_settings">
+            <table>
+                <tr>
+                    <td>
+                        BG Music
+                    </td>
+                    <td>
+                        <input type="range" min="0" max="10" value="5" id="vol" oninput="change_volume()" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Sunny Day &nbsp; <img src=icon/play.png id=btn_play_sunny onclick=play_music_sunny()> <img src=icon/pause.png id=btn_pause_sunny onclick=play_pause_sunny()>
+                    </td>
+                    <td>
+                        <input type="range" min="0" max="10" value="5" id="vol2" oninput="change_volume2()" />
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        Rainy Day &nbsp; <img src=icon/play.png id=btn_play_rainy onclick=play_music_rainy()> <img src=icon/pause.png id=btn_pause_rainy onclick=play_pause_rainy()>
+                    </td>
+                    <td>
+                        <input type="range" min="0" max="10" value="5" id="vol3" oninput="change_volume3()" />
+                    </td>
+                </tr>
+            </table>
+            <audio id="audio-player-elements1" loop>
+                <source src="music/sunny day.mp3" type=audio/mpeg>
+            </audio>
+            <audio id="audio-player-elements2" loop>
+                <source src="music/rainy day.mp3" type=audio/mpeg>
+            </audio>
+        </div>
+        <!--
+        <div id="song-container">
+            <p class="song-title" onclick="choiceOfSongs()">1</p>
+            <p class="song-title">Guitar Vibelofi hiphop mix</p>
+            <p class="song-title">japanese night cafe vibes a lofi hip hop mix chill with taiki</p>
+            <p class="song-title">Cute Lofi Music [PLAYLIST] For Study, Relax, and Chill</p>
+            <p class="song-title">midnight studying. [lofijazzhopchill mix]</p>
+            <p class="song-title">Just wanna stay here forever lofi hip hop mix</p>
+            <p class="song-title">night at the bookstore. [lofi chillhop anime mix]</p>
+            <p class="song-title">early morning vibeshappy lofi mix</p>
+            <p class="song-title">spring vibes lofi mix aesthetic music chill beats to relaxstudy</p>
+        </div>
+        -->
+        
+        <div id="load_screen">
+            <img src=picture/loadingScreen.gif id=loading>
+        </div>
+        <img src=icon/back.png class=back onclick=displayPreviousImage()> <img src=icon/next.png class=next onclick=displayNextImage()>
+        <div class="clock-container">
+            <div class="clock-col">
+                <p class="clock-day clock-timer"></p>
+                <p class="clock-label">
+                    Day
+                </p>
+            </div>
+            <div class="clock-col">
+                <p class="clock-hours clock-timer"></p>
+                <p class="clock-label">
+                    Hours
+                </p>
+            </div>
+            <div class="clock-col">
+                <p class="clock-minutes clock-timer"></p>
+                <p class="clock-label">
+                    Minutes
+                </p>
+            </div>
+            <div class="clock-col">
+                <p class="clock-seconds clock-timer"></p>
+                <p class="clock-label">
+                    Seconds
+                </p>
+            </div>
+        </div>
+        <audio id="audio-player" loop>
+            <source src="music/a peaceful place. [lofi jazzhop chillhop mix].mp3" type=audio/mpeg>
+        </audio>
+            <p id="song-title">samplemusic</p>
+        <img src=icon/play.png id=btn_play onclick=play_music()> <img src=icon/pause.png id=btn_pause onclick=play_pause()>
+      	<footer>
+            <div>
+                <p class="txt1">Created By:</p>
+              	<a href=https://www.facebook.com/iSmileee26/ target=_blank class=profile_link><p class=txt1>@ismael</p></a>
+                <hr />
+                <p><b class="key_color">G</b> Change Song & GIF</p>
+                <p><b class="key_color">F</b> Fullscreen</p>
+                <p><b class="key_color">RIGHT ARROW</b> Next Song</p>
+                <p><b class="key_color">LEFT ARROW</b> Previous Song</p>
+                <p><b class="key_color">M</b> Sound Settings</p>
+            </div>
+        </footer>
+         <img src=icon/aboutme.png id=aboutme>
+        <div class="main-container"></div>
+      <script type=text/javascript src=jsFile/jquery-3.5.1.js></script>
+      <script src=https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.min.js></script>
+      <script type=text/javascript src=jsFile/changeBg.js></script>
+      <script>
+            $(document).ready(function () {
+                $("#music_settings").hide();
+                $("footer").hide();
+                $("#song-container").hide();
+                $("#loading_1").hide();
+                $("#music_icon").click(function () {
+                    $("#music_settings").toggle("slide");
+                });
+                $("#aboutme").click(function () {
+                    $("footer").fadeToggle();
+                });
+                $("#listOfSongs").click(function () {
+                    $("#song-container").fadeToggle();
+                });
+            });
+            jQuery(document).keydown(function (a) {
+                //DISABLE ESC AND F11
+                if (a.which === 122 || a.which === 27) {
+                    a.preventDefault();
+                    return;
+                }
+                //SHUFFLE SONG AND GIF - G
+                if (a.which === 71) {
+                    setTimeout(function () {
+                        shuffle_pic();
+                    }, 500);
+                }
+                //FULLSCREEN - F
+                if (a.which === 70) {
+                    fullscreenModeON();
+                }
+                //NEXT - ARROW RIGHT
+                if (a.which === 39) {
+                    setTimeout(function () {
+                        displayNextImage();
+                    }, 500);
+                }
+                //PREVIOUS - ARROW LEFT
+                if (a.which === 37) {
+                    setTimeout(function () {
+                        displayPreviousImage();
+                    }, 500);
+                }
+                //MUISC SETTINGS - M
+                if (a.which === 77) {
+                    $("#music_settings").toggle("slide");
+                }
+                console.log(a.which);
+            });
+        </script>
+    </body>
+</html>
